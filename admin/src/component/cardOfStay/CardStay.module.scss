@@ -1,0 +1,52 @@
+.cardStay {
+  width: 40%;
+  border: 1px solid rgb(213, 213, 213);
+  border-radius: 15px;
+  padding: 10px;
+  margin-bottom: 20px;
+  cursor: pointer;
+
+  .image {
+    text-align: center;
+    img {
+      width: 90%;
+      object-fit: cover;
+      margin: 0 auto;
+      border-radius: 5px;
+    }
+  }
+
+  // infor
+  .infor {
+    font-size: 17px;
+    font-weight: 500;
+
+    p {
+      margin: 5px 0;
+    }
+    .name {
+      font-size: 1.4em;
+      font-weight: 700;
+    }
+    .rate {
+      .point {
+        padding: 10px;
+        border-radius: 10px;
+      }
+    }
+    .price {
+      color: rgb(239, 82, 82);
+    }
+    .address {
+      color: rgb(65, 65, 65);
+    }
+
+    // bg for rate
+    .blue {
+      background-color: blue;
+    }
+    .yellow {
+      background-color: yellow;
+    }
+  }
+}
