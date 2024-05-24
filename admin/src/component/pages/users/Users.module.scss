@@ -1,0 +1,16 @@
+.users {
+  border: 1px solid #ddd;
+  margin: 20px;
+
+  tr:hover {
+    background-color: rgb(209, 209, 209);
+    cursor: pointer;
+  }
+  th,
+  td {
+    border-bottom: 1px solid #ddd;
+  }
+  td {
+          font-size: 1.1em;
+  }
+}
