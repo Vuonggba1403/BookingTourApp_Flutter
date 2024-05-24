@@ -13,6 +13,8 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
+import 'package:quickalert/models/quickalert_type.dart';
+import 'package:quickalert/widgets/quickalert_dialog.dart';
 
 class GetInformationUser extends StatefulWidget {
   const GetInformationUser(
@@ -107,9 +109,19 @@ class _GetInformationUserState extends State<GetInformationUser> {
       'email': email,
       'phoneNumber': phoneNumber,
     });
-    showCustomDelightToastBar(
+
+    //delay 2s
+
+    await Future.delayed(const Duration(seconds: 1));
+    Navigator.push(
       context,
-      "Đặt phòng thành công",
+      MaterialPageRoute(builder: (context) => const CurveBar()),
+    );
+    QuickAlert.show(
+      context: context,
+      type: QuickAlertType.success,
+      text: 'Đặt tour thành công',
+      autoCloseDuration: const Duration(seconds: 4),
     );
   }
 
@@ -313,7 +325,6 @@ class _GetInformationUserState extends State<GetInformationUser> {
                             });
                           } else {
                             addBookingHotel();
-                            loadingScreen(context, () => CurveBar());
                           }
 
                           ;

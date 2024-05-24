@@ -2,6 +2,7 @@ import 'dart:typed_data';
 import 'dart:ui';
 import 'package:BookingTourApp/Screens/Other_Page/change_language.dart';
 import 'package:BookingTourApp/Screens/Other_Page/favorite.dart';
+import 'package:BookingTourApp/Screens/information_screen/information_addTour.dart';
 import 'package:BookingTourApp/Screens/information_screen/information_history.dart';
 import 'package:BookingTourApp/Screens/information_screen/information_screen.dart';
 import 'package:BookingTourApp/Screens/auth/Login.dart';
@@ -340,7 +341,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     loadingScreen(context, () => const HistoryScreen());
                   },
                   child: const UserInfoContainer(
-                      iconData: FontAwesomeIcons.clock, text: "Lịch sử"),
+                      iconData: FontAwesomeIcons.clock, text: "L/s đặt KS"),
                 ),
               ],
             ),
@@ -348,8 +349,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
               height: 20,
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
+                GestureDetector(
+                  onTap: () {
+                    loadingScreen(context, () => const InformationBuyTicket());
+                  },
+                  child: const UserInfoContainer(
+                      iconData: FontAwesomeIcons.clock, text: "L/s chuyến đi"),
+                ),
                 GestureDetector(
                   onTap: () {
                     loadingScreen(context, () => const LoginScreen());

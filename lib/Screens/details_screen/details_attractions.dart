@@ -1,6 +1,7 @@
 import 'package:BookingTourApp/Screens/Other_Page/searchcar.dart';
 import 'package:BookingTourApp/Screens/details_screen/detail_stays.dart';
 import 'package:BookingTourApp/Themes/Colors.dart';
+import 'package:BookingTourApp/components/curve_navigation_bar.dart';
 import 'package:BookingTourApp/data/Custom/loading_screen.dart';
 import 'package:BookingTourApp/models/models_rentalcar.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
@@ -13,6 +14,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:BookingTourApp/models/models_hotel.dart';
 import 'package:BookingTourApp/models/models_placed.dart';
 import 'package:BookingTourApp/data/Custom/showCustomDelightToastBar.dart';
+import 'package:intl/intl.dart';
+import 'package:quickalert/quickalert.dart';
 
 class DetailAttractionScreen extends StatefulWidget {
   final Placed placed;
@@ -121,6 +124,30 @@ class _DetailAttractionScreenState extends State<DetailAttractionScreen> {
     } catch (e) {
       print("Failed to delete favorite: $e");
     }
+  }
+
+  // add vao firebase
+  Future<void> addBookingAttraction() async {
+    final CollectionReference addBookingAttraction =
+        FirebaseFirestore.instance.collection('addBookingAttraction');
+    await addBookingAttraction.add({
+      'placed': widget.placed.placed,
+      'time': DateFormat('HH:mm:ss dd/MM/yyyy').format(DateTime.now()),
+      'price': rentaltotalPrice,
+      'hour': selectHours,
+      'car': selectedValue,
+      'priceticket': widget.placed.money,
+    });
+    await Future.delayed(const Duration(seconds: 1));
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => const CurveBar()));
+
+    QuickAlert.show(
+      context: context,
+      type: QuickAlertType.success,
+      text: 'Đặt tour thành công',
+      autoCloseDuration: const Duration(seconds: 4),
+    );
   }
 
   @override
@@ -526,7 +553,9 @@ class _DetailAttractionScreenState extends State<DetailAttractionScreen> {
                     Expanded(
                       flex: 1,
                       child: GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          addBookingAttraction();
+                        },
                         child: Container(
                           padding: const EdgeInsets.symmetric(vertical: 15),
                           decoration: BoxDecoration(

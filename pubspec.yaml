@@ -62,6 +62,7 @@ dependencies:
   flutter_staggered_grid_view: ^0.7.0
   comment_box: ^0.0.18
   dropdown_button2: ^2.3.9
+  quickalert: ^1.1.0
 
 dev_dependencies:
   flutter_test:
