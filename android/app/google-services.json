@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "198466427601",
+    "project_id": "bookingtourapp-7ed7d",
+    "storage_bucket": "bookingtourapp-7ed7d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:198466427601:android:a14dfbba22e5d5258e43f0",
+        "android_client_info": {
+          "package_name": "com.example.bottom_navigation_bar_animation"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "198466427601-32itfkv87kv5vp64urv76jg4m8po4ei4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bottom_navigation_bar_animation",
+            "certificate_hash": "ff6a45f2fc6a78fdddeae394edcedb209c8ace4e"
+          }
+        },
+        {
+          "client_id": "198466427601-b0qrngth3ph7l5e9si7tnpn2t2pcrng1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAsiJKOzJqbOfS0U9jKgWa95EYvIEU7eR4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "198466427601-b0qrngth3ph7l5e9si7tnpn2t2pcrng1.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "198466427601-vs3geannl6suqu0vo8616potdlvlgu7i.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.bottomNavigationBarAnimation"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
