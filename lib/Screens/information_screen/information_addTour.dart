@@ -96,7 +96,9 @@ class _InformationBuyTicketState extends State<InformationBuyTicket> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            CustomText(text: "Tour: ${buyTourList.placed}"),
+                            Center(
+                                child: CustomText(
+                                    text: "Tour: ${buyTourList.placed}")),
                             const Padding(
                               padding: EdgeInsets.all(10.0),
                               child: Row(
@@ -121,14 +123,6 @@ class _InformationBuyTicketState extends State<InformationBuyTicket> {
                                     "Loại xe thuê : ${buyTourList.car} - Giờ thuê: ${buyTourList.hour}"),
                             CustomText(
                                 text: "Tổng tiền: ${buyTourList.price} VND"),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                CustomText(
-                                    text: "Thời gian : ${buyTourList.time}"),
-                              ],
-                            ),
                           ],
                         ),
                       ),

@@ -285,11 +285,16 @@ class _ViewStaysFilterState extends State<ViewStaysFilter> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                '$currentAmount trên $totalResults kết quả',
-                style: const TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
+              Expanded(
+                child: Text(
+                  '$currentAmount trên $totalResults kết quả',
+                  maxLines: 1,
+                  softWrap: true,
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                    overflow: TextOverflow.ellipsis,
+                  ),
                 ),
               ),
               GestureDetector(
