@@ -12,26 +12,10 @@ class SearchBarStays extends StatefulWidget {
 }
 
 class _SearchBarStaysState extends State<SearchBarStays> {
-  @override
-  void initState() {
-    super.initState();
-    getCurrenDate();
-  }
-
   String input = '';
   String selectedDate = '';
-  List typeOfRooms = [1,2,0];
+  List typeOfRooms = [1, 2, 0];
   bool showPickerDate = false;
-
-  void getCurrenDate() {
-    DateTime now = DateTime.now();
-    DateTime currentDate = DateTime(now.year, now.month, now.day);
-    DateTime nextDate = DateTime(now.year, now.month, now.day + 1);
-
-    setState(() {
-      selectedDate = '${formatDate(currentDate)} - ${formatDate(nextDate)}';
-    });
-  }
 
   Future<void> _navigateToSearchAttractions(BuildContext context) async {
     final result = await Navigator.push(
@@ -46,32 +30,6 @@ class _SearchBarStaysState extends State<SearchBarStays> {
         input = result;
       });
     }
-  }
-
-  Future<void> _selectDate(BuildContext context) async {
-    DateTime currentDate = DateTime.now();
-    DateTimeRange? userSelectedDate = await showDateRangePicker(
-      context: context,
-      firstDate: DateTime(currentDate.year, currentDate.month),
-      currentDate: DateTime.now(),
-      lastDate: DateTime(currentDate.year + 1, 12),
-    );
-
-    if (userSelectedDate != null) {
-      // format for selected date
-      var startDate = formatDate(userSelectedDate.start);
-      var endDate = formatDate(userSelectedDate.end);
-
-      // show selected date in search bar
-      setState(() {
-        selectedDate = '$startDate - $endDate';
-      });
-    }
-  }
-
-  String formatDate(DateTime date) {
-    String formatedDate = DateFormat('dd/MM/yyyy').format(date);
-    return formatedDate.toString();
   }
 
   @override
@@ -111,11 +69,15 @@ class _SearchBarStaysState extends State<SearchBarStays> {
                         color: Color.fromARGB(255, 84, 84, 84),
                       ),
                       const SizedBox(width: 20),
-                      Text(
-                        input != '' ? input : "Bạn muốn ở đâu?",
-                        style: const TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.w500),
-                        overflow: TextOverflow.ellipsis,
+                      Expanded(
+                        child: Text(
+                          maxLines: 1,
+                          softWrap: true,
+                          input != '' ? input : "Bạn muốn ở đâu?",
+                          style: const TextStyle(
+                              fontSize: 16, fontWeight: FontWeight.w500),
+                          overflow: TextOverflow.ellipsis,
+                        ),
                       )
                     ],
                   ),
@@ -124,84 +86,84 @@ class _SearchBarStaysState extends State<SearchBarStays> {
             ),
 
             // select date
-            Expanded(
-              flex: 1,
-              child: GestureDetector(
-                onTap: () {
-                  _selectDate(context);
-                },
-                child: Container(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 19.0, vertical: 11.0),
-                  decoration: const BoxDecoration(
-                      border: Border(
-                          bottom: BorderSide(
-                    width: 4,
-                    color: Color.fromARGB(255, 238, 155, 77),
-                  ))),
-                  child: Row(
-                    children: [
-                      const Icon(
-                        Icons.calendar_month,
-                        size: 25,
-                        color: Color.fromARGB(255, 84, 84, 84),
-                      ),
-                      const SizedBox(width: 20),
-                      Text(
-                        selectedDate,
-                        style: const TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.w500),
-                      )
-                    ],
-                  ),
-                ),
-              ),
-            ),
+            // Expanded(
+            //   flex: 1,
+            //   child: GestureDetector(
+            //     onTap: () {
+            //       _selectDate(context);
+            //     },
+            //     child: Container(
+            //       padding: const EdgeInsets.symmetric(
+            //           horizontal: 19.0, vertical: 11.0),
+            //       decoration: const BoxDecoration(
+            //           border: Border(
+            //               bottom: BorderSide(
+            //         width: 4,
+            //         color: Color.fromARGB(255, 238, 155, 77),
+            //       ))),
+            //       child: Row(
+            //         children: [
+            //           const Icon(
+            //             Icons.calendar_month,
+            //             size: 25,
+            //             color: Color.fromARGB(255, 84, 84, 84),
+            //           ),
+            //           const SizedBox(width: 20),
+            //           Text(
+            //             selectedDate,
+            //             style: const TextStyle(
+            //                 fontSize: 16, fontWeight: FontWeight.w500),
+            //           )
+            //         ],
+            //       ),
+            //     ),
+            //   ),
+            // ),
 
-            // select the type of room
-            Expanded(
-              flex: 1,
-              child: GestureDetector(
-                onTap: () {
-                  showModalBottomSheet(
-                      context: context,
-                      builder: (ctx) => SelectTypeOfRooms(
-                            previousOptions: typeOfRooms,
-                          )).then((value) {
-                    if (value != null) {
-                      setState(() {
-                        typeOfRooms = value;
-                      });
-                    }
-                  });
-                },
-                child: Container(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 19.0, vertical: 11.0),
-                  decoration: const BoxDecoration(
-                      border: Border(
-                          bottom: BorderSide(
-                    width: 4,
-                    color: Color.fromARGB(255, 238, 155, 77),
-                  ))),
-                  child: Row(
-                    children: [
-                      const Icon(
-                        Icons.person,
-                        size: 25,
-                        color: Color.fromARGB(255, 84, 84, 84),
-                      ),
-                      const SizedBox(width: 20),
-                      Text(
-                        '${typeOfRooms[0]} phòng . ${typeOfRooms[1]} người lớn . ${typeOfRooms[2]} trẻ em',
-                        style: const TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.w500),
-                      )
-                    ],
-                  ),
-                ),
-              ),
-            ),
+            // // select the type of room
+            // Expanded(
+            //   flex: 1,
+            //   child: GestureDetector(
+            //     onTap: () {
+            //       showModalBottomSheet(
+            //           context: context,
+            //           builder: (ctx) => SelectTypeOfRooms(
+            //                 previousOptions: typeOfRooms,
+            //               )).then((value) {
+            //         if (value != null) {
+            //           setState(() {
+            //             typeOfRooms = value;
+            //           });
+            //         }
+            //       });
+            //     },
+            //     child: Container(
+            //       padding: const EdgeInsets.symmetric(
+            //           horizontal: 19.0, vertical: 11.0),
+            //       decoration: const BoxDecoration(
+            //           border: Border(
+            //               bottom: BorderSide(
+            //         width: 4,
+            //         color: Color.fromARGB(255, 238, 155, 77),
+            //       ))),
+            //       child: Row(
+            //         children: [
+            //           const Icon(
+            //             Icons.person,
+            //             size: 25,
+            //             color: Color.fromARGB(255, 84, 84, 84),
+            //           ),
+            //           const SizedBox(width: 20),
+            //           Text(
+            //             '${typeOfRooms[0]} phòng . ${typeOfRooms[1]} người lớn . ${typeOfRooms[2]} trẻ em',
+            //             style: const TextStyle(
+            //                 fontSize: 16, fontWeight: FontWeight.w500),
+            //           )
+            //         ],
+            //       ),
+            //     ),
+            //   ),
+            // ),
 
             Expanded(
                 flex: 1,

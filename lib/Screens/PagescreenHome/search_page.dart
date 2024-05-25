@@ -142,7 +142,7 @@ class _HomePageState extends State<SearchPage> {
               children: [
                 // search bar
                 SizedBox(
-                  height: showSearchStaysBar ? 220 : 158,
+                  height: showSearchStaysBar ? 120 : 140,
                   child: showSearchStaysBar
                       ? const SearchBarStays()
                       : const SearchBarAttractions(),
