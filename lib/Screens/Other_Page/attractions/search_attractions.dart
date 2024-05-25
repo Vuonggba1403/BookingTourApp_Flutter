@@ -26,6 +26,7 @@ class _SearchAttractionsState extends State<SearchAttractions> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         leading: IconButton(
             onPressed: () {
@@ -38,7 +39,8 @@ class _SearchAttractionsState extends State<SearchAttractions> {
             )),
         title: const Text(
           'Tìm các địa điểm tham quan ',
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20),
+          style: TextStyle(
+              color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20),
         ),
         backgroundColor: const Color.fromARGB(255, 0, 59, 149),
       ),
