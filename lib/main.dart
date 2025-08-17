@@ -14,6 +14,6 @@ void main() async {
 
   runApp(const MaterialApp(
     debugShowCheckedModeBanner: false,
-    home: SplashScreen(),
+    home: Mainscreen(),
   ));
 }

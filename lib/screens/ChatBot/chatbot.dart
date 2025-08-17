@@ -313,21 +313,15 @@ class _GeminiChatState extends State<ChatBot> {
         ChatMessage? lastMessage = messages.firstOrNull;
         if (lastMessage != null && lastMessage.user == geminiUser) {
           lastMessage = messages.removeAt(0);
-          String response = event.content?.parts?.fold(
-                "",
-                (previous, current) => "$previous${current.text}",
-              ) ??
-              "";
+          String response = event.output ??
+              ""; // Changed from event.content?.parts?.fold to event.output
           setState(() {
             messages = [lastMessage!, ...messages];
           });
           lastMessage.text += response;
         } else {
-          String response = event.content?.parts?.fold(
-                "",
-                (previous, current) => "$previous${current.text}",
-              ) ??
-              "";
+          String response = event.output ??
+              ""; // Changed from event.content?.parts?.fold to event.output
 
           ChatMessage message = ChatMessage(
             user: geminiUser,
