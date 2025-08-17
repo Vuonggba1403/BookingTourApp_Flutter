@@ -69,3 +69,16 @@ Configure Firebase:
     The firebase_options.dart file is pre-configured.
 Run the app:
     flutter run
+## 📸 Screenshots
+### 🏠 Home
+  ![Home](assets/screenshots/Home.png)
+### 🔐 Login
+  ![Login](assets/screenshots/Login.png)
+### 🚗 Search Car
+  ![Search Car](assets/screenshots/SearchCar.png)
+### 🌍 Search Place
+  ![Search Place](assets/screenshots/SearchPlace.png)
+### 📖 Book Tour
+  ![Book Tour](assets/screenshots/BookTour.png)
+### 🤖 ChatBot
+  ![ChatBot](assets/screenshots/ChatBot.png)
